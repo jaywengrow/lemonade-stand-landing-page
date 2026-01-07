@@ -23,11 +23,58 @@
       color: var(--gray-dark);
       background-color: var(--gray-light);
       line-height: 1.6;
+      padding-top: 60px; /* space for fixed navbar */
+      scroll-behavior: smooth;
     }
 
     a {
       color: var(--yellow);
       text-decoration: none;
+    }
+
+    /* Navbar styles */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      height: 60px;
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--yellow);
+      user-select: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li {
+      font-weight: 600;
+    }
+
+    nav ul li a {
+      color: var(--gray-dark);
+      padding: 0.4rem 0.7rem;
+      border-radius: 4px;
+      transition: background-color var(--transition), color var(--transition);
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+      background-color: var(--yellow);
+      color: var(--gray-dark);
+      outline: none;
     }
 
     header, section, footer {
@@ -213,22 +260,37 @@
         flex-direction: column;
         gap: 1rem;
       }
+      nav ul {
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <nav>
+    <div class="logo">Lemonade Stand</div>
+    <ul>
+      <li><a href="#about-section">About</a></li>
+      <li><a href="#how-it-works-section">How It Works</a></li>
+      <li><a href="#flavors-section">Flavors</a></li>
+      <li><a href="#testimonials-section">Testimonials</a></li>
+      <li><a href="#order-section">Order</a></li>
+    </ul>
+  </nav>
+
+  <header role="banner">
     <h1>Fresh Lemonade Delivered Directly to Your Door</h1>
     <p>Quench your thirst with our delicious, handcrafted lemonade. Just order online, and we'll bring the refreshment to you.</p>
     <button class="btn-primary" onclick="document.getElementById('order-section').scrollIntoView({behavior: 'smooth'})">Order Now</button>
   </header>
 
-  <section class="about" aria-label="About Lemonade">
+  <section class="about" aria-label="About Lemonade" id="about-section">
     <h2>Freshly Squeezed, Always Delicious</h2>
     <p>Our lemonade is made from the freshest lemons, pure cane sugar, and just the right amount of love. Each bottle is crafted to refresh and delight, perfect for any time of day.</p>
   </section>
 
-  <section class="how-it-works" aria-label="How It Works">
+  <section class="how-it-works" aria-label="How It Works" id="how-it-works-section">
     <h2>How It Works</h2>
     <div class="steps">
       <div class="step">
@@ -246,7 +308,7 @@
     </div>
   </section>
 
-  <section class="flavors" aria-label="Lemonade Flavors">
+  <section class="flavors" aria-label="Lemonade Flavors" id="flavors-section">
     <h2>Our Flavors</h2>
     <div class="flavors-list">
       <div class="flavor">Classic Lemonade</div>
@@ -256,7 +318,7 @@
     </div>
   </section>
 
-  <section class="testimonials" aria-label="Customer Testimonials">
+  <section class="testimonials" aria-label="Customer Testimonials" id="testimonials-section">
     <h2>What Our Customers Say</h2>
     <div class="testimonial">
       The freshest lemonade I've ever had! Delivery was fast and the taste is unbeatable.
@@ -276,5 +338,6 @@
   <footer>
     <p>Questions? Reach out at <a href="mailto:info@lemonadestand.com">info@lemonadestand.com</a></p>
   </footer>
+
 </body>
 </html>
